@@ -93,10 +93,12 @@
 				ctx.beginPath();
 				var width = document.getElementById("width").value;
 				var height = document.getElementById("height").value;
-				ctx.rect(x,y,width,height);
+				
 				if(fillFlag) {
+					ctx.rect(x,y,width,height);
 					ctx.fill();
 				} else {
+					ctx.rect(x-0.5,y-0.5,width,height);
 				 	ctx.stroke();
 				}
 				break;
