@@ -33,15 +33,20 @@
 					Współrzędna Y
 					<input type="number" name="startY" id="startY" placeholder="0">
 				</label>
-				<label for="fill">
-					Typ wypełnienia
-					<input type="radio" name="fill" value="fill" checked> Pełne
-					<input type="radio" name="fill" value="stroke"> Obrys
-				</label>
 				<label for="color">
 					Kolor
-					<input class="color" name="color" id="colorPicker">
+					<input class="color" name="color" id="colorPicker" value="000">
 				</label>
+				<label for="fill">
+					Typ wypełnienia
+					<input type="radio" name="fill" value="fill" id="fill"> Pełne
+					<input type="radio" name="fill" value="stroke" id="stroke"> Obrys
+				</label>
+				<label for="strokeWidth" class="hidden" >
+					Szerokość obrysu
+					<input type="number" name="strokeWidth" id="sWidth" value="1">
+				</label>
+
 				</fieldset>
 				<fieldset id="userOpt">
 				</fieldset>

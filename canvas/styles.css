@@ -20,6 +20,7 @@ fieldset {
 	display: block;
 }
 
+
 #container {
 	display: table;
 }
@@ -68,4 +69,10 @@ label[for="type"]{
 	display: inline-block;
 	padding: 0px 5px;
 	height: 35px;
+}
+
+
+
+.hidden {
+	display: none !important;
 }

@@ -7,9 +7,8 @@
 	var clear = document.getElementById("clear");
 	var submit = document.getElementById("draw");
 	var type = document.getElementById("type");
+	var strokeWidth = document.getElementById("sWidth");
 	var fillFlag;
-	c.width = (window.innerWidth * 60)/100;
-
 
 	//Select options 
 	R.addEvent(type, 'change', function() {
@@ -88,19 +87,29 @@
 		var y = document.getElementById("startY").value;
 
 		ctx.fillStyle = '#' + document.getElementById("colorPicker").value;
-		ctx.strokeStyle = '#000';
+		ctx.strokeStyle = '#' + document.getElementById("colorPicker").value;
 		switch(type.value) {
 			case 'rect':
 				ctx.beginPath();
 				var width = document.getElementById("width").value;
 				var height = document.getElementById("height").value;
-				ctx.fillRect(x,y,width,height);
+				ctx.rect(x,y,width,height);
+				if(fillFlag) {
+					ctx.fill();
+				} else {
+				 	ctx.stroke();
+				}
 				break;
 			case 'circle':
 				var radius = document.getElementById("radius").value;
 				ctx.beginPath();
 				ctx.arc(x,y,radius,0,2*Math.PI, false);
-				ctx.fill();
+				ctx.lineWidth = strokeWidth.value
+				if(fillFlag) {
+					ctx.fill();
+				} else {
+				 	ctx.stroke();
+				}
 				break;
 			case 'arc':
 				break;
@@ -122,5 +131,25 @@
 	type.dispatchEvent(ev);
 
 
-	
+
+
+	// Creat filled/stroked rectangle
+
+	R.addEvent(document.getElementById("fill"),
+			   'click',
+			    function(){
+		fillFlag = true;
+		strokeWidth.parentNode.className = 'hidden';
+	});
+
+	R.addEvent(document.getElementById("stroke"),
+			  'click', 
+			  function(){
+		fillFlag = false;
+		strokeWidth.parentNode.className = '';
+	});
+
+
+
+	c.width = (window.innerWidth * 60)/100;
 })();
