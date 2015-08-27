@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title></title>
+	<link href="../R/Rlib.css" rel="stylesheet">
+	<style>
+		/*	Właściwy CSS */
+		body {
+			background: #000;
+			color: #fff;
+		}
+		a,a:visited,a:active {
+			color: lightblue;
+			text-decoration: none;
+		}
+		a:hover {color: white;}
+		
+		#menu, #menu ul {
+			list-style: none;
+		}
+		
+		#menu > li {
+			display: inline-block;
+			padding: 10px 20px;
+		}
+		#menu .node a {
+			position: relative;
+		}
+		#menu .node ul {
+			position: absolute;
+			top: 2em;
+		}
+	</style>
+	<script src="../R/Rlib.js"></script>
+</head>
+<body>
+
+<ul id="menu">
+	<li><a href="#">Abra</a></li>
+	<li><a href="#">Kadabra</a>
+		<ul>
+			<li><a href="#">Czupakabra</a></li>
+			<li><a href="#">Alakhazam</a></li>
+			<li><a href="#">Pokahontas</a></li>
+		</ul>
+	</li>
+	<li><a href="#">To nie ja</a></li>
+	<li><a href="#">To</a>
+		<ul>
+			<li><a href="#">To</a></li>
+			<li><a href="#">Moja</a></li>
+			<li><a href="#">Szauma</a></li>
+		</ul>
+	</li>
+	<li><a href="#">End</a></li>
+</ul>
+
+<script type="text/javascript">
+R.createMenu('click');
+</script>
+</body>
+</html>

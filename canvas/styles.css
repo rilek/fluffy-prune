@@ -1,0 +1,51 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,600,700);
+
+* {
+	padding: 0px;
+	margin: 0px;
+}
+
+body {
+	padding: 20px;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 0.75rem;
+}
+
+#container {
+	display: table;
+}
+
+#canv, #options {
+	display: table-cell;
+	 vertical-align: top;
+}
+
+/* FORM */
+#myCanv {
+	border: 1px solid #ddd;
+	box-shadow: 0px 3px 3px rgba(0,0,0,0.1);
+}
+
+#opt {
+	margin: 15px;
+}
+
+#opt legend {
+	font-size: 1.125rem;
+	font-weight: bold;
+	margin-bottom: 15px;
+}
+#opt label {
+	display: block;
+	margin: 10px 5px;
+}
+
+#opt option {
+	padding: 2px 5px;
+}
+
+#opt select, #opt input {
+	display: inline-block;
+	height: 35px;
+	padding: 0px 5px
+}

@@ -1,0 +1,53 @@
+<!doctype HTML>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>PAINT made by me</title>
+	<link rel="stylesheet" href="../R/Rlib.css">
+	<link rel="stylesheet" href="styles.css">
+	
+</head>
+<body>
+	<h1>PotoSop</h1>
+	<div id="container">
+		<div id="canv">
+		<canvas id="myCanv" width="800" height="300">Not workin'</canvas>
+		</div>
+		<div id="options">
+			<form action="#" id="opt">
+				<legend>Ustawienia</legend>
+				<label for="type">Wybierz typ:
+				<select name="type" id="type">
+					<option value="Rect">Prostokąt</option>
+					<option value="Circle">Koło</option>
+					<option value="Arc">Krzywa</option>
+				</select>
+				</label>
+				<label for="startX">
+					Współrzędna X
+					<input type="number" name="startX" id="startX" value="0" required>
+				</label>
+				<label for="startY">
+					Współrzędna Y
+					<input type="number" name="startY" id="startY" value="0" required>
+				</label>
+				<label for="width">
+					Szerokość
+					<input type="number" name="width" id="width" value="0" required>
+				</label>
+				<label for="height">
+					Wysokość
+					<input type="number" name="height" id="height" value="0" required>
+				</label>
+				<input type="submit" id="draw" value="Rysuj">
+				<input type="button" id="clear" value="Wyczyść">
+			</form>
+		</div>
+	</div>
+	
+
+	
+<script src="../R/Rlib.js"></script>
+<script src="scripts.js"></script>
+</body>
+</html>
