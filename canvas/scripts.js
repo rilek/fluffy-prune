@@ -7,11 +7,11 @@
 
 	c.width = (window.innerWidth * 60)/100;
 
-	window.addEventListener('resize', function(e) {
+	addEvent(window, 'resize', function(e) {
 		c.width = (window.innerWidth * 60)/100;
 	}, false);
 
-	draw.addEventListener('submit', function(e) {
+	addEvent(draw, 'submit', function(e) {
 		var x = document.getElementById("startX").value;
 		var y = document.getElementById("startY").value;
 		var width = document.getElementById("width").value;
@@ -21,7 +21,7 @@
 		e.preventDefault();
 	}, false);
 
-	clear.addEventListener('click', function(){
+	addEvent(clear, 'click', function(){
 		ctx.clearRect(0,0,c.width, c.height);
 	})
 
