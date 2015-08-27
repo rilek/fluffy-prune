@@ -88,6 +88,7 @@
 
 		ctx.fillStyle = '#' + document.getElementById("colorPicker").value;
 		ctx.strokeStyle = '#' + document.getElementById("colorPicker").value;
+		ctx.lineWidth = strokeWidth.value;
 		switch(type.value) {
 			case 'rect':
 				ctx.beginPath();
@@ -106,7 +107,7 @@
 				var radius = document.getElementById("radius").value;
 				ctx.beginPath();
 				ctx.arc(x,y,radius,0,2*Math.PI, false);
-				ctx.lineWidth = strokeWidth.value
+				
 				if(fillFlag) {
 					ctx.fill();
 				} else {
