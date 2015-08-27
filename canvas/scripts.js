@@ -81,7 +81,6 @@
 		ctx.lineWidth = sWidth;
 		
 		if(sWidth % 2) {
-			R.assert(true, 'hehe');
 			x -= 0.5;
 			y -= 0.5;
 		}
