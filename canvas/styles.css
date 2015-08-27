@@ -11,6 +11,15 @@ body {
 	font-size: 0.75rem;
 }
 
+fieldset {
+	padding: 0;
+	margin:0;
+	border: none;
+	outline: none;
+	box-sizing: border-box;
+	display: block;
+}
+
 #container {
 	display: table;
 }
@@ -18,6 +27,17 @@ body {
 #canv, #options {
 	display: table-cell;
 	 vertical-align: top;
+}
+
+#options label {
+	position: relative;
+}
+#options fieldset input {
+
+}
+
+label[for="type"]{
+
 }
 
 /* FORM */
@@ -37,15 +57,15 @@ body {
 }
 #opt label {
 	display: block;
-	margin: 10px 5px;
+	padding: 3px 5px;
 }
 
 #opt option {
 	padding: 2px 5px;
 }
 
-#opt select, #opt input {
+#opt select, #opt input[type="number"] {
 	display: inline-block;
+	padding: 0px 5px;
 	height: 35px;
-	padding: 0px 5px
 }

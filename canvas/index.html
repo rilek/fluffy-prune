@@ -10,18 +10,19 @@
 </head>
 <body>
 	<h1>PotoSop</h1>
-	<div id="container">
+	<div id="container" class="table">
 		<div id="canv">
 		<canvas id="myCanv" width="800" height="300">Not workin'</canvas>
 		</div>
 		<div id="options">
 			<form action="#" id="opt">
+			<fieldset>
 				<legend>Ustawienia</legend>
 				<label for="type">Wybierz typ:
 				<select name="type" id="type">
-					<option value="Rect">Prostokąt</option>
-					<option value="Circle">Koło</option>
-					<option value="Arc">Krzywa</option>
+					<option value="rect" selected>Prostokąt</option>
+					<option value="circle">Koło</option>
+					<option value="arc">Krzywa</option>
 				</select>
 				</label>
 				<label for="startX">
@@ -30,16 +31,20 @@
 				</label>
 				<label for="startY">
 					Współrzędna Y
-					<input type="number" name="startY" id="startY" placeholder="0" required>
+					<input type="number" name="startY" id="startY" placeholder="0">
 				</label>
-				<label for="width">
-					Szerokość
-					<input type="number" name="width" id="width" placeholder="0" required>
+				<label for="fill">
+					Typ wypełnienia
+					<input type="radio" name="fill" value="fill" checked> Pełne
+					<input type="radio" name="fill" value="stroke"> Obrys
 				</label>
-				<label for="height">
-					Wysokość
-					<input type="number" name="height" id="height" placeholder="0" required>
+				<label for="color">
+					Kolor
+					<input class="color" name="color" id="colorPicker">
 				</label>
+				</fieldset>
+				<fieldset id="userOpt">
+				</fieldset>
 				<input type="submit" id="draw" value="Rysuj">
 				<input type="button" id="clear" value="Wyczyść">
 			</form>
@@ -47,7 +52,7 @@
 	</div>
 	
 
-	
+<script type="text/javascript" src="jscolor/jscolor.js"></script>
 <script src="../R/Rlib.js"></script>
 <script src="scripts.js"></script>
 </body>
