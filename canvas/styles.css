@@ -30,16 +30,10 @@ fieldset {
 	 vertical-align: top;
 }
 
-#options label {
-	position: relative;
-}
-#options fieldset input {
+#options {
 
 }
 
-label[for="type"]{
-
-}
 
 /* FORM */
 #myCanv {
@@ -64,7 +58,6 @@ label[for="type"]{
 #opt option {
 	padding: 2px 5px;
 }
-
 #opt select, #opt input[type="number"] {
 	display: inline-block;
 	padding: 0px 5px;

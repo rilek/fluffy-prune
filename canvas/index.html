@@ -25,31 +25,24 @@
 					<option value="arc">Krzywa</option>
 				</select>
 				</label>
-				<label for="startX">
-					Współrzędna X
+				<label for="startX">Współrzędna X</label>
 					<input type="number" name="startX" id="startX" placeholder="0" required>
-				</label>
-				<label for="startY">
-					Współrzędna Y
+			
+				<label for="startY">Współrzędna Y</label>
 					<input type="number" name="startY" id="startY" placeholder="0">
-				</label>
-				<label for="color">
-					Kolor
+				<label for="color">Kolor</label>
 					<input class="color" name="color" id="colorPicker" value="000">
-				</label>
-				<label for="fill">
-					Typ wypełnienia
+				
+				<label for="fill">Typ wypełnienia</label>
 					<input type="radio" name="fill" value="fill" id="fill"> Pełne
 					<input type="radio" name="fill" value="stroke" id="stroke"> Obrys
-				</label>
-				<label for="strokeWidth" class="hidden" >
-					Szerokość obrysu
+				
+				<label for="strokeWidth" class="hidden">Szerokość obrysu
 					<input type="number" name="strokeWidth" id="sWidth" value="1">
 				</label>
-
-				</fieldset>
-				<fieldset id="userOpt">
-				</fieldset>
+			</fieldset>
+			<fieldset id="userOpt">
+			</fieldset>
 				<input type="submit" id="draw" value="Rysuj">
 				<input type="button" id="clear" value="Wyczyść">
 			</form>

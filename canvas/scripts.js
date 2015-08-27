@@ -1,5 +1,5 @@
 (function() {
-	//var
+	//var init
 	var c = document.getElementById("myCanv");
 	var ctx = c.getContext("2d");
 
@@ -70,36 +70,33 @@
 		}
 	});
 
-	//Resize canvas
-	R.addEvent(window, "resize", function(e) {
-		if(window.innerWidth > 800){
-
-			c.width = (window.innerWidth * 60)/100;
-		} else {
-			document.getElementById("container").style.display = 'block';
-		}
-	}, false);
-
 	//Draw element
 	R.addEvent(form, "submit", function(e) {
-
 		var x = document.getElementById("startX").value;
 		var y = document.getElementById("startY").value;
+		var sWidth = strokeWidth.value;
 
 		ctx.fillStyle = '#' + document.getElementById("colorPicker").value;
 		ctx.strokeStyle = '#' + document.getElementById("colorPicker").value;
-		ctx.lineWidth = strokeWidth.value;
+		ctx.lineWidth = sWidth;
+		
+		if(sWidth % 2) {
+			R.assert(true, 'hehe');
+			x -= 0.5;
+			y -= 0.5;
+		}
+		
 		switch(type.value) {
 			case 'rect':
 				ctx.beginPath();
 				var width = document.getElementById("width").value;
 				var height = document.getElementById("height").value;
-				
+
+				ctx.rect(x,y,width,height);
+
 				if(fillFlag) {
-					ctx.rect(x,y,width,height);
 					ctx.fill();
 				} else {
-					ctx.rect(x-0.5,y-0.5,width,height);
 				 	ctx.stroke();
 				}
 				break;
@@ -127,17 +124,7 @@
 		ctx.clearRect(0,0,c.width, c.height);
 	})
 
-
-	//Symulating change on first select option
-	var ev = document.createEvent("HTMLEvents");
-	ev.initEvent("change", true, true);
-	type.dispatchEvent(ev);
-
-
-
-
 	// Creat filled/stroked rectangle
-
 	R.addEvent(document.getElementById("fill"),
 			   'click',
 			    function(){
@@ -152,7 +139,23 @@
 		strokeWidth.parentNode.className = '';
 	});
 
+	//Resize canvas
+	R.addEvent(window, "resize", function(e) {
+		if(window.innerWidth > 800){
 
+			c.width = (window.innerWidth * 60)/100;
+		} else {
+			document.getElementById("container").style.display = 'block';
+		}
+	}, false);
 
+	//Init canvas width
 	c.width = (window.innerWidth * 60)/100;
+
+	//Symulating change on first select option
+	var ev = document.createEvent("HTMLEvents");
+	ev.initEvent("change", true, true);
+	type.dispatchEvent(ev);
+
+
 })();
