@@ -66,8 +66,20 @@ var R = {};
 	'attr2':'value2'
 }
 */
-	R.setAttributes = function(el, attrs) {
-	  for(var key in attrs) {
-	    el.setAttribute(key, attrs[key]);
-	  }
-	};
+R.setAttributes = function(el, attrs) {
+	for(var key in attrs) {
+		el.setAttribute(key, attrs[key]);
+	}
+};
+
+
+R.animate = function (elem,style,to,time,unit,from) {
+    if( !elem) return;
+    var start = new Date().getTime();
+    var timer = setInterval(function() {
+            var step = Math.min(1,(new Date().getTime()-start)/time);
+            elem.style[style] = (from+step*(to-from)) + unit;
+            if(step == 1) clearInterval(timer);
+        },25);
+    elem.style[style] = from+unit;
+}

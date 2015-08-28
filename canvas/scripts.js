@@ -2,14 +2,15 @@
 	//var init
 	var c = document.getElementById("myCanv");
 	var ctx = c.getContext("2d");
-
-	var form = document.getElementById("opt");
+	var options = document.getElementsByClassName("options")[0];
+	var form = document.getElementsByClassName("opt")[0];
 	var clear = document.getElementById("clear");
 	var submit = document.getElementById("draw");
 	var type = document.getElementById("type");
 	var strokeWidth = document.getElementById("sWidth");
+	var closeButton = document.getElementById("close"); 
 	var fillFlag;
-
+	var menuOpen = 1;
 	//Select options 
 	R.addEvent(type, 'change', function() {
 		var fieldset = document.getElementById("userOpt");
@@ -19,6 +20,8 @@
 		switch(type.value) {
 			//Opcje dla Prostokątów
 			case 'rect':
+				var wP = document.createElement("p");
+				var hP = document.createElement("p");
 				var wLabel = document.createElement("label");
 				var hLabel = document.createElement("label");
 				var wInput = document.createElement("input");
@@ -43,10 +46,13 @@
 				hText = document.createTextNode("Wysokość ");
 				wLabel.appendChild(wText);
 				hLabel.appendChild(hText);
-				wLabel.appendChild(wInput);
 				hLabel.appendChild(hInput);
-				fieldset.appendChild(wLabel);
-				fieldset.appendChild(hLabel);
+				wP.appendChild(wLabel);
+				wP.appendChild(wInput);
+				hP.appendChild(hLabel);
+				hP.appendChild(hInput);
+				fieldset.appendChild(wP);
+				fieldset.appendChild(hP);
 				break;
 			//Opcje dla Elips
 			case 'circle':
@@ -139,22 +145,54 @@
 	});
 
 	//Resize canvas
-	R.addEvent(window, "resize", function(e) {
-		if(window.innerWidth > 800){
+	R.addEvent(window, "resize", function() {
 
-			c.width = (window.innerWidth * 60)/100;
+		var tempCanvas = document.createElement('canvas');
+		tempCanvas.width = c.width;
+		tempCanvas.height = c.height;
+
+		// save your canvas into temp canvas
+		tempCanvas.getContext('2d').drawImage(c, 0, 0);
+
+		// resize my canvas as needed, probably in response to mouse events
+		if(window.innerWidth > 500){
+		c.width = (window.innerWidth * 100)/100 - menuOpen*298 - 49;
 		} else {
-			document.getElementById("container").style.display = 'block';
+			c.width = (window.innerWidth * 100)/100;
 		}
+		c.height = (window.innerHeight * 100)/100 - 10;
+
+		// draw temp canvas back into myCanvas, scaled as needed
+		c.getContext('2d').drawImage(tempCanvas, 0, 0, tempCanvas.width, tempCanvas.height, 0, 0, c.width, c.height)
+
 	}, false);
 
-	//Init canvas width
-	c.width = (window.innerWidth * 60)/100;
+	R.addEvent(closeButton, 'click', function(){
+		if(menuOpen) {
+			menuOpen = 0;
+			options.style.right = -298 + 'px';
+			closeButton.childNodes[0].innerHTML = '<';
+			window.dispatchEvent(ev);
+
+		} else {
+			menuOpen = 1;
+			options.style.right = 0 + 'px';
+			closeButton.childNodes[0].innerHTML = '>';
+			window.dispatchEvent(ev);
+
+		}
+	},false);
+
 
 	//Symulating change on first select option
 	var ev = document.createEvent("HTMLEvents");
 	ev.initEvent("change", true, true);
 	type.dispatchEvent(ev);
+	fill.dispatchEvent(ev);
+	ev.initEvent("resize",true,true);
+	window.dispatchEvent(ev);
 
 
+	//Init 
+	strokeWidth.parentNode.className = 'hidden';
 })();

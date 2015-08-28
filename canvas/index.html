@@ -9,42 +9,54 @@
 	
 </head>
 <body>
-	<h1>PotoSop</h1>
+	
 	<div id="container" class="table">
+		<h1 id="logo">PotoSop</h1>
 		<div id="canv">
 		<canvas id="myCanv" width="800" height="300">Not workin'</canvas>
 		</div>
-		<div id="options">
-			<form action="#" id="opt">
+		<div class="options">
+			<div id="close"><span>></span></div>
+			<div class="optTitle">Nowy kształt</div>
+			<form action="#" class="opt">
 			<fieldset>
-				<legend>Ustawienia</legend>
-				<label for="type">Wybierz typ:
+				<!--<legend>Ustawienia</legend>-->
+				<p>
+				<label for="type">Wybierz typ:</label>
 				<select name="type" id="type">
 					<option value="rect" selected>Prostokąt</option>
 					<option value="circle">Koło</option>
 					<option value="arc">Krzywa</option>
 				</select>
-				</label>
+				</p>
+				<p>
 				<label for="startX">Współrzędna X</label>
 					<input type="number" name="startX" id="startX" placeholder="0" required>
-			
+				</p>
+				<p>
 				<label for="startY">Współrzędna Y</label>
 					<input type="number" name="startY" id="startY" placeholder="0">
+				</p>
+				<p>
 				<label for="color">Kolor</label>
 					<input class="color" name="color" id="colorPicker" value="000">
-				
+				</p>
+				<p>
 				<label for="fill">Typ wypełnienia</label>
 					<input type="radio" name="fill" value="fill" id="fill"> Pełne
 					<input type="radio" name="fill" value="stroke" id="stroke"> Obrys
-				
-				<label for="strokeWidth" class="hidden">Szerokość obrysu
-					<input type="number" name="strokeWidth" id="sWidth" value="1">
-				</label>
+				</p>
+				<p>
+				<label for="strokeWidth">Szerokość obrysu</label>
+				<input type="number" name="strokeWidth" id="sWidth" value="1">
+				</p>
 			</fieldset>
 			<fieldset id="userOpt">
 			</fieldset>
-				<input type="submit" id="draw" value="Rysuj">
-				<input type="button" id="clear" value="Wyczyść">
+			<fieldset class="submitButtons">
+				<input type="submit" id="draw" value="Rysuj" class="button">
+				<input type="button" id="clear" value="Wyczyść" class="button">
+			</fieldset>
 			</form>
 		</div>
 	</div>
