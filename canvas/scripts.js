@@ -56,6 +56,7 @@
 				break;
 			//Opcje dla Elips
 			case 'circle':
+				var rP = document.createElement("p");
 				var rLabel = document.createElement("label");
 				var rInput = document.createElement("input");
 				var rText = document.createTextNode("Promień");
@@ -66,8 +67,9 @@
 					'placeholder' : '0'
 				});
 				rLabel.appendChild(rText);
-				rLabel.appendChild(rInput);
-				fieldset.appendChild(rLabel);
+				rP.appendChild(rLabel);
+				rP.appendChild(rInput);
+				fieldset.appendChild(rP);
 				break;
 			case 'arc':
 				break;
