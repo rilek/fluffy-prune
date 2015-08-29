@@ -1,8 +1,12 @@
 (function() {
 	//var init
+	var options = {
+		'barWidth' : 230,
+
+	};
 	var c = document.getElementById("myCanv");
 	var ctx = c.getContext("2d");
-	var options = document.getElementsByClassName("options")[0];
+	var optionDiv = document.getElementsByClassName("options")[0];
 	var form = document.getElementsByClassName("opt")[0];
 	var clear = document.getElementById("clear");
 	var submit = document.getElementById("draw");
@@ -153,12 +157,11 @@
 		inMemCanvas.width = c.width;
 	    inMemCanvas.height = c.height;
 	    inMemCanvas.getContext('2d').drawImage(c, 0, 0);
-	    
+	    var newWidth;
 
-		var newWidth;
 		// resize my canvas as needed, probably in response to mouse events
 		if(window.innerWidth > 500){
-			newWidth = (window.innerWidth * 100)/100 - menuOpen*298 - 49;
+			newWidth = (window.innerWidth * 100)/100 - menuOpen*options.barWidth - 49;
 
 		} else {
 			newWidth = (window.innerWidth * 100)/100;
@@ -171,15 +174,16 @@
 	}, false);
 
 	R.addEvent(closeButton, 'click', function(){
+		
 		if(menuOpen) {
 			menuOpen = 0;
-			options.style.right = -298 + 'px';
+			optionDiv.style.right = -(options.barWidth) + 'px';
 			closeButton.childNodes[0].innerHTML = '<';
 			window.dispatchEvent(ev);
 
 		} else {
 			menuOpen = 1;
-			options.style.right = 0 + 'px';
+			optionDiv.style.right = 0 + 'px';
 			closeButton.childNodes[0].innerHTML = '>';
 			window.dispatchEvent(ev);
 
@@ -198,4 +202,6 @@
 
 	//Init 
 	strokeWidth.parentNode.className = 'hidden';
+	optionDiv.style.width = options.barWidth + 'px';
+	closeButton.style.right = options.barWidth + 5 + 'px';
 })();

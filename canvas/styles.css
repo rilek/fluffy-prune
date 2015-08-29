@@ -1,5 +1,5 @@
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,600,700);
-@import url(reset.css);
+@import url(../R/reset.css);
 
 
 body {
@@ -9,6 +9,14 @@ body {
 	font-family: 'Open Sans', sans-serif;
 	font-size: 0.6875rem;
 	color: #000;
+	background: #252137;
+	background: 
+		linear-gradient(135deg, transparent 75%, rgba(255, 255, 255, .4) 0%) 0 0,
+		linear-gradient(-45deg, transparent 75%, rgba(255, 255, 255, .4) 0%) 15px 15px,
+		linear-gradient(135deg, transparent 75%, rgba(255, 255, 255, .4) 0%) 15px 15px,
+		linear-gradient(-45deg, transparent 75%, rgba(255, 255, 255, .4) 0%) 0 0,
+		#ddd;
+	background-size: 30px 30px;
 
 }
 
@@ -27,19 +35,19 @@ body {
 }
 
 
-
+#canv {}
 
 #myCanv {
 	border: 1px solid #ddd;
 	box-shadow: 0px 3px 3px rgba(0,0,0,0.1);
 	margin: 5px;
 	overflow: hidden;
+	background: #fff
 }
 
 /*				FORM*/
 .options {
 	position: absolute;
-	width:300px;
 	right: 0px;
 	top: 0px;
 	padding: 5px 2px 0px 0px;
@@ -126,7 +134,6 @@ body {
 
 #close {
 	position: absolute; 
-	right: 305px;
 	display: block;
 	height: 30px;
 	width: 30px;
