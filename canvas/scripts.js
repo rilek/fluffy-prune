@@ -146,25 +146,26 @@
 
 	//Resize canvas
 	R.addEvent(window, "resize", function() {
+		var d = c.parentNode;
+		var inMemCanvas = document.createElement("canvas");
+		inMemCanvas.width = c.width;
+	    inMemCanvas.height = c.height;
+	    inMemCanvas.getContext('2d').drawImage(c, 0, 0);
+	    
 
-		var tempCanvas = document.createElement('canvas');
-		tempCanvas.width = c.width;
-		tempCanvas.height = c.height;
-
-		// save your canvas into temp canvas
-		tempCanvas.getContext('2d').drawImage(c, 0, 0);
-
+		var newWidth;
 		// resize my canvas as needed, probably in response to mouse events
 		if(window.innerWidth > 500){
-		c.width = (window.innerWidth * 100)/100 - menuOpen*298 - 49;
+			newWidth = (window.innerWidth * 100)/100 - menuOpen*298 - 49;
+
 		} else {
-			c.width = (window.innerWidth * 100)/100;
+			newWidth = (window.innerWidth * 100)/100;
 		}
+		c.width = newWidth;
 		c.height = (window.innerHeight * 100)/100 - 10;
-
-		// draw temp canvas back into myCanvas, scaled as needed
-		c.getContext('2d').drawImage(tempCanvas, 0, 0, tempCanvas.width, tempCanvas.height, 0, 0, c.width, c.height)
-
+		
+		ctx.drawImage(inMemCanvas, 0, 0);
+		
 	}, false);
 
 	R.addEvent(closeButton, 'click', function(){
