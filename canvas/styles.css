@@ -4,7 +4,9 @@
 
 body {
 	width: 100vw;
+	width: 100%;
 	height: 100vh;
+	height: 100%;
 	overflow: hidden;
 	font-family: 'Open Sans', sans-serif;
 	font-size: 0.6875rem;
@@ -54,6 +56,7 @@ body {
 	color: #9da2a5;
 
 	height: 100vh;
+	height: 100%;
 }
 
 .opt {
@@ -227,6 +230,7 @@ fieldset {
 	right: 0px;
 	top: 0px;
 	height: 100vh;
+	height: 100%;
 	background: #252933;
 	transition: 0.2s;
 }
