@@ -6,64 +6,25 @@
 	<title>PAINT made by me</title>
 	<link rel="stylesheet" href="../R/Rlib.css">
 	<link rel="stylesheet" href="styles.css">
-	
+	<script type="text/javascript" src="jscolor/jscolor.js"></script>
+	<script src="../R/Rlib.js"></script>
 </head>
 <body>
 	
-	<div id="container" class="table">
-		<h1 id="logo">PotoSop</h1>
-		<div id="canv" class="lel">
-			<canvas id="myCanv" width="200" height="200">Not workin'</canvas>
-		</div>
-		<div class="options">
+<div id="container" class="table">
+	<h1 id="logo">PotoSop</h1>
+	<div id="canv" class="lel">
+		<canvas id="myCanv" width="200" height="200">Not workin'</canvas>
+	</div>
+	<div id="optContainer">
+		<div id="minibar">
 			<div id="close"><span>></span></div>
-			<div class="optTitle">Nowy kształt</div>
-			<form action="#" class="opt">
-			<fieldset>
-				<!--<legend>Ustawienia</legend>-->
-				<p>
-				<label for="type">Wybierz typ:</label>
-				<select name="type" id="type">
-					<option value="rect" selected>Prostokąt</option>
-					<option value="circle">Koło</option>
-					<option value="arc">Krzywa</option>
-				</select>
-				</p>
-				<p>
-				<label for="startX">Współrzędna X</label>
-					<input type="number" name="startX" id="startX" placeholder="0" required>
-				</p>
-				<p>
-				<label for="startY">Współrzędna Y</label>
-					<input type="number" name="startY" id="startY" placeholder="0">
-				</p>
-				<p>
-				<label for="color">Kolor</label>
-					<input class="color" name="color" id="colorPicker" value="000">
-				</p>
-				<p>
-				<label for="fill">Typ wypełnienia</label>
-					<input type="radio" name="fill" value="fill" id="fill"> Pełne
-					<input type="radio" name="fill" value="stroke" id="stroke"> Obrys
-				</p>
-				<p>
-				<label for="strokeWidth">Szer. obrysu</label>
-				<input type="number" name="strokeWidth" id="sWidth" value="1">
-				</p>
-			</fieldset>
-			<fieldset id="userOpt">
-			</fieldset>
-			<fieldset class="submitButtons">
-				<input type="submit" id="draw" value="Rysuj" class="button">
-				<input type="button" id="clear" value="Wyczyść" class="button">
-			</fieldset>
-			</form>
 		</div>
 	</div>
+</div>
 	
 
-<script type="text/javascript" src="jscolor/jscolor.js"></script>
-<script src="../R/Rlib.js"></script>
+
 <script src="scripts.js"></script>
 </body>
 </html>

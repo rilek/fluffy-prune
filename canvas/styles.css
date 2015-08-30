@@ -60,10 +60,9 @@ body {
 	padding: 5px;
 	box-sizing: border-box;
 	background: #14171a;
-	border-radius: 0px 3px 3px 3px;
-	border:1px solid #000;
+	border:0px solid #000;
 	position: relative;
-	margin: 1px;
+	margin: 0px;
 	margin-top: 0px
 }
 
@@ -78,19 +77,17 @@ body {
 
 	border-top: 2px solid rgba(255,255,255, 0.3);
 	border-bottom: 0px;
-	border-radius: 2px 2px 0px 0px;
 	font-weight: bold;
 }
 .optTitle:after {
 	content: '';
 	display: 'block';
 	position: absolute;
-	border-radius: 2px;
 	border:2px solid #000;
 }
 
 .opt label, .opt input {
-
+	border: 0px;
 	height: 18px;
 }
 
@@ -106,9 +103,8 @@ body {
 
 .opt input, .opt select {
 	max-width: 70px;
-	border-radius: 3px;
+	
 	outline: none;
-	border: 1px solid #000;
 	background: #181d20;
 	color: #9da2a5;
 
@@ -116,7 +112,7 @@ body {
 
 .opt .button{
 	height: 25px;
-	border-radius: 3px;
+
 	background: #fff;
 	outline: none;
 	border: 1px solid #0d0e10;
@@ -132,31 +128,48 @@ body {
 }
 
 
+#minibar {
+	position: relative;
+	margin-left: -40px;
+	height: 100%;
+	width: 40px;
+	background: #000;
+	float: left;
+}
+
+
 #close {
-	position: absolute; 
+	position: absolute;
 	display: block;
-	height: 30px;
-	width: 30px;
-	background: #1CEDA8;
-	font-size: 20px;
+	top: 0px;
+	height: 40px;
+	width: 40px;
+	background: #758596;
+	font-size: 24px;
 	font-weight: bolder;
-	border-radius: 2px;
 	overflow: hidden;
 }
-#close span {display: block; position: absolute; top: 4px; left: 9px; color: #fff;
-	text-shadow: 2px 2px 0px #18CC91,
-				 3px 3px 0px #18CC91,
-				 4px 4px 0px #18CC91,
-				 5px 5px 0px #18CC91,
-				 6px 6px 0px #18CC91,
-				 7px 7px 0px #18CC91,
-				 8px 8px 0px #18CC91,
-				 9px 9px 0px #18CC91,
-				 10px 10px 0px #18CC91,
-				 11px 11px 0px #18CC91,
-				 12px 12px 0px #18CC91;
+#close span {display: block; position: absolute; top: 8px; left: 14px; color: #fff;
+	text-shadow: 2px 2px 0px #616d7b,
+				 3px 3px 0px #616d7b,
+				 4px 4px 0px #616d7b,
+				 5px 5px 0px #616d7b,
+				 6px 6px 0px #616d7b,
+				 7px 7px 0px #616d7b,
+				 8px 8px 0px #616d7b,
+				 9px 9px 0px #616d7b,
+				 10px 10px 0px #616d7b,
+				 11px 11px 0px #616d7b,
+				 12px 12px 0px #616d7b,
+				 13px 13px 0px #616d7b,
+				 14px 14px 0px #616d7b,
+				 15px 15px 0px #616d7b,
+				 16px 16px 0px #616d7b,
+				 17px 17px 0px #616d7b,
+				 18px 18px 0px #616d7b,
+				 19px 19px 0px #616d7b;
 	}
-#close:hover {cursor: pointer; background: #18CC91;}
+#close:hover {cursor: pointer; background: #616d7b;}
 
 /*
 fieldset {
@@ -208,6 +221,102 @@ fieldset {
 }
 
 */
+
+#optContainer {
+	position: absolute;
+	right: 0px;
+	top: 0px;
+	height: 100vh;
+	background: #252933;
+}
+
+.optWindow {
+		color: #9daeb8;
+}
+
+.optWindow h1 {
+	display: inline-block;
+	position: relative;
+	padding: 8px 10px;
+	margin-bottom: -1px;
+	background: #16171c;
+	font-weight: bold;
+	cursor: pointer;
+	margin-top: 5px;
+}
+
+.optWindow h1 {
+	box-sizing: border-box;
+	border-top: 2px solid #00cc99; 
+}
+
+.optWindow .optForm {
+	display: block;
+	margin-top: 0px;
+	padding: 10px;
+	background: #16171c;
+
+}
+
+.optWindow p {
+	margin: 5px 0px;
+}
+.optForm label, .optForm input {
+
+	height: 18px;
+}
+
+.optForm label {
+	display: inline-block;
+	vertical-align: middle;
+	margin: 0 1rem 0 0;
+	text-align: right;
+	font-size: 10px;
+	text-transform: uppercase;
+	height: 10px;
+}
+
+.optForm input, .optForm select {
+	max-width: 100px;
+	outline: none;
+	border: none;
+	background: #303540;
+	color: #9da2a5;
+	padding: 1px 5px;
+}
+
+.optForm input[type='number'] {
+	width: 50px;
+}
+
+.optForm input[type='radio'] {
+	margin: 1px 2px 1px 7px;
+}
+.optForm select {
+
+}
+
+.optForm p {
+	display: block;
+
+}
+
+.optForm p * {
+		vertical-align: middle;
+}
+
+.ups {
+	width: 40px;
+}
+
+.follow {
+	float: left;
+}
+
+.clearfix {
+	clear:both;
+}
+
 .hidden {
 	display: none !important;
 }

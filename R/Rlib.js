@@ -12,8 +12,8 @@ var R = {};
 		var li = document.createElement('li');
 		var text = document.createTextNode(message);
 		li.appendChild(text);
-		li.className = (value ? 'pass' : 'fail');
-		results.insertBefore(li,results.firstChild);
+		li.className = 'pass';
+		results.appendChild(li);
 	};
 
 //Funkcja zamieniająca zagniezdzone ul na menu wielopoziomowe

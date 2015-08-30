@@ -13,6 +13,16 @@
 	max-height: 300px;
 	padding: 5px 20px;
 	overflow: hidden;
+
+
+
+	display: block;
+	list-style-type: disc;
+	margin-block-start: 1em;
+	margin-block-end: 1em;
+	-moz-padding-start: 40px;
+
+
 }
 
 #results li {
@@ -26,3 +36,5 @@
 	color: brown;
 	text-decoration: line-through; 
 }
+
+
