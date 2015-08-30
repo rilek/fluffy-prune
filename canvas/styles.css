@@ -322,13 +322,6 @@ fieldset {
 	display: none !important;
 }
 
-
 @media (max-width: 500px) {
-	.opt label {
-		text-align: left;
-		width: auto;
-		display: block;
-	}
-	.options {width: 200px;}
-	#close {right: 205px;}
+
 }
