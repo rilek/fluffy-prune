@@ -20,11 +20,10 @@
 				'value': 'rect',
 				'selected': 'selected',
 				'text': 'Prostokąt'
-			},{
+			}, {
 				'text': 'Koło',
 				'value': 'circle',
-			},
-			{
+			}, {
 				'text': 'Krzywa',
 				'value': 'arc'
 			}] //end of options
@@ -41,8 +40,7 @@
 					'placeholder' : '0',
 					'required' : 'required'
 				} // end of attributes
-			},	//end of 1
-			{
+			}, {	//end of 1
 				'label' : 'Współrzędna Y:',
 				'name' : 'startY',
 				'attributes' : {
@@ -50,16 +48,13 @@
 					'placeholder' : '0',
 					'required' : 'required'
 				}, // end of attributes
-
-			}, // end of 2
-			{
+			}, {// end of 2
 				'label' : 'Kolor:',
 				'name' : 'color',
 				'attributes' : {
 					'class' : 'color',
 					'value' : '000000'
 				},
-
 			}
 		], // end of input
 
@@ -83,7 +78,7 @@
 				] // end of options
 			} // end of radio
 		], // end of radioBox
-		'input stroke customBox' : [
+		'input customBox strokeCh' : [
 			{
 				'label': 'Szer. obrysu',
 				'name': 'strokeWidth',
@@ -94,10 +89,16 @@
 
 				},
 				'customBox': true,
-				'customId': 'sWidth'
+				'customId': 'strokeCh'
 			}
 		],
-		'input rectDimensions customBox' : [
+		'input customBox fillCh' : [
+			{
+				'label': 'szer. wypelnienia',
+				'name': 'fillWidth'
+			}
+		],
+		'input customBox rectCh' : [
 		{
 			'label': 'Szerokość',
 			'name' : 'rectWidth',
@@ -106,8 +107,8 @@
 				'id': 'rectWidth'
 			},
 			'customBox': true,
-		},
-		{
+			'customId': 'rectDimensionsCh'
+		}, {
 			'label': 'Wysokość',
 			'name': 'rectHeight',
 			'attributes': {
@@ -115,6 +116,7 @@
 				'id': 'rectHeight'
 			},
 			'customBox': true,
+			'customId': '',
 		}
 		],
 		'input circDimensions' : []
@@ -170,74 +172,65 @@
 	
 	var fillFlag;
 	var menuOpen = 1;
-	/*
-	//Select options 
-	R.addEvent(type, 'change', function() {
-		var fieldset = document.getElementById("userOpt");
-		while(fieldset.firstChild) {
-			fieldset.removeChild(fieldset.firstChild);
-		}
-		switch(type.value) {
-			//Opcje dla Prostokątów
-			case 'rect':
-				var wP = document.createElement("p");
-				var hP = document.createElement("p");
-				var wLabel = document.createElement("label");
-				var hLabel = document.createElement("label");
-				var wInput = document.createElement("input");
-				var hInput = document.createElement("input");
-				wLabel.setAttribute("for", "width");
-				hLabel.setAttribute("for", "height");
-				R.setAttributes(wInput, {
-					'name' : 'width',
-					'id' : 'width',
-					'type' : 'number',
-					'placeholder' : '0',
-					'required' : ''
-				});
-				R.setAttributes(hInput, {
-					'name' : 'height',
-					'id' : 'height',
-					'type' : 'number',
-					'placeholder' : '0',
-					'required' : ''
-				});
-				wText = document.createTextNode("Szerokość ");
-				hText = document.createTextNode("Wysokość ");
-				wLabel.appendChild(wText);
-				hLabel.appendChild(hText);
-				hLabel.appendChild(hInput);
-				wP.appendChild(wLabel);
-				wP.appendChild(wInput);
-				hP.appendChild(hLabel);
-				hP.appendChild(hInput);
-				fieldset.appendChild(wP);
-				fieldset.appendChild(hP);
-				break;
-			//Opcje dla Elips
-			case 'circle':
-				var rP = document.createElement("p");
-				var rLabel = document.createElement("label");
-				var rInput = document.createElement("input");
-				var rText = document.createTextNode("Promień");
-				R.setAttributes(rInput, {
-					'name' : 'radius',
-					'id' : 'radius',
-					'type' : 'number',
-					'placeholder' : '0'
-				});
-				rLabel.appendChild(rText);
-				rP.appendChild(rLabel);
-				rP.appendChild(rInput);
-				fieldset.appendChild(rP);
-				break;
-			case 'arc':
-				break;
-			default:
-				break;
-		}
+
+
+
+	R.addEvent(optionDiv, 'change', function(e){
+		e = e || event;
+	  var target = e.target || e.srcElement;
+
+	  if(target.nodeName == 'SELECT') {
+	  	R.assert(true, 'select');
+
+	  } else if (target.nodeName == 'INPUT') {
+			
+			var parentChild = target.parentNode.childNodes;
+			for(i=0, count = parentChild.length; i<count; i++) {
+
+				R.assert(true, parentChild[i].value);
+				var parentValue = parentChild[i].value || '';
+				var targetTarget = document.getElementById(target.id + 'Ch') || '';
+				if(target.id == parentValue){
+					
+					var targetClass = targetTarget.className == 'hidden' ? '' : 'hidden';
+					targetTarget.className = targetClass;
+					R.assert(true, parentChild[i].value+'Ch');
+				} else {
+					targetTarget.className = 'hidden';
+				}
+			}
+	 	}
 	});
 
+
+	/*
+	
+	R.addEvent(optionDiv, 'change', function(e){
+		e = e || event;
+	  var target = e.target || e.srcElement;
+	  
+	  if(target.value || target.checked){
+		  var parentChild = target.parentNode.childNodes;
+		  var targetId = target.value;
+		  
+		  for(var i = 0, count = parentChild.length; i < count; i++) {
+		  	var parentValue = parentChild[i].value;
+		  	var tT = document.getElementById(parentValue + 'Ch') || 
+		  					 document.getElementById(target[i] + 'Ch');
+		  	R.assert(targetId == parentValue || targetId == target[i].value, target[i] + ' / ' + parentValue );
+		  	if(targetId == parentValue){
+		  		tT.className = '' ? tT.className = 'hidden' : tT.className = '';
+		  	} else {
+		  		tT.className = 'hidden';
+		  	}
+		  }
+		}
+
+
+	});
+
+	*/
+	/*
 	//Draw element
 	R.addEvent(form, "submit", function(e) {
 		var x = document.getElementById("startX").value;
@@ -425,7 +418,8 @@
 				if(key.indexOf('customBox') != -1){
 					fieldset = document.createElement('fieldset');
 					fieldset.className = 'custom';
-					fieldset.id = 'customBox-' + Okienko.customCounter++;
+					fieldset.id = key.split(' ')[2];
+					fieldset.className = 'hidden';
 					return true;
 				}
 			};
@@ -555,7 +549,7 @@
 						break;
 					}
 
-					// Case: radioBox and checkBox
+					// Case: radioBox
 					case (key.indexOf('radioBox') != -1):
 						for(var i = 0, count = obj[key].length; i < count; i++) {
 							var p = document.createElement('p');
@@ -577,7 +571,6 @@
 									radio.setAttribute('checked', 'checked');
 								}
 								radio.setAttribute('type', 'radio');
-								
 								p.appendChild(radio);
 								p.appendChild(document.createTextNode(obj[key][i]['radios'][j]['text']));
 							}
@@ -585,6 +578,7 @@
 						}
 						break;
 
+					// Case: checkBox
 					case (key.indexOf('checkBox') != -1):
 						for(i = 0, count = obj[key].length; i < count; i++) {
 							var p = document.createElement('p');

@@ -12,7 +12,7 @@ var R = {};
 		var li = document.createElement('li');
 		var text = document.createTextNode(message);
 		li.appendChild(text);
-		li.className = 'pass';
+		li.className = (value ? 'pass' : 'fail');
 		results.appendChild(li);
 	};
 
