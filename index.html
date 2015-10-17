@@ -4,13 +4,51 @@
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Moje projekty</title>
+	<link href='https://fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
 	<link href="R/Rlib.css" rel="stylesheet">
+
 	<style>
+		@import url();
 		/*	Właściwy CSS */
 		body {
-			background: #000;
-			color: #fff;
-	
+			background: #fff;
+			color: #000;
+
+			text-rendering: optimizeLegibility;
+			text-rendering: geometricPrecision;
+			font-smooth: always;
+
+			font-smoothing: antialiased;
+			-moz-font-smoothing: antialiased;
+			-webkit-font-smoothing: antialiased;
+			-webkit-font-smoothing: subpixel-antialiased;
+		}
+		a {
+			color: black;
+			text-decoration: none;
+			font-family: "Roboto", Arial, sans-serif;
+			font-weight: lighter;
+			font-size: 30px;
+			-webkit-font-smoothing:antialiased;
+			-moz-osx-font-smoothing: grayscale;
+			text-shadow: 0 0 0;
+		}
+		#menu li {
+			width: 100%;
+		}
+		#menu li {
+			text-align: center;
+
+		}
+		#menu li a {
+			display: block;
+			width: 100%;
+			transition: 0.5s;
+			vertical-align: middle;
+			padding: 25px 0;
+			text-align: center;
+			line-height: 1.2;
+		}
 	</style>
 	<script src="R/Rlib.js"></script>
 </head>
@@ -21,5 +59,28 @@
 	<li><a href="chatbox">Chatbox</a></li>
 	<li><a href="menu">Menu</a></li>
 </ul>
+
+
+
+<script>
+(function(){
+	var ul = document.getElementById("menu");
+	
+	ul.addEventListener('mouseenter', function(e) {
+		if(e.target.tagName == 'A'){ e.target.style.backgroundColor = 'rgb(' + randomRGB() + ')';
+		}
+	}, true);
+	ul.addEventListener('mouseleave', function(e) {
+		if(e.target.tagName == 'A') e.target.style.backgroundColor = '';
+	}, true);
+
+	function randomRGB() {
+		return Math.round(Math.random()*255) + ',' + Math.round(Math.random()*255) + ',' + Math.round(Math.random()*255);
+	}
+})();
+</script>
+<script type='text/javascript' id="__bs_script__">//<![CDATA[
+    document.write("<script async src='http://HOST:3000/browser-sync/browser-sync-client.2.9.6.js'><\/script>".replace("HOST", location.hostname));
+//]]></script>
 </body>
 </html>
