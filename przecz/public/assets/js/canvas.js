@@ -40,7 +40,7 @@ functions.initVariable = function (varObj) {
 	mainCtx.lineWidth = 2;
 	mainCtx.beginPath();
 	mainCtx.moveTo( varObj.startPosX , varObj.startPosY );
-	mainCtx.lineTo( varObj.posX , varObj.posY );
+	mainCtx.lineTo( varObj.posX + 1 , varObj.posY );
 	mainCtx.stroke();
 
 	// Restore context settings 
