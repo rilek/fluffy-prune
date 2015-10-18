@@ -59,6 +59,22 @@ app.controller('appCtrl', function($scope, $interval) {
 		}
 	};
 
+	$scope.download = function (ev) {
+		var tempCnv = document.createElement('canvas');
+		var tempCtx = tempCnv.getContext('2d');
+
+		tempCnv.width = options.canvas.width;
+		tempCnv.height = options.canvas.height;
+
+
+		tempCtx.drawImage(options.grid.canvas, 0, 0);
+		tempCtx.drawImage(options.canvas.canvas, 0, 0);
+
+		var dataURL = tempCnv.toDataURL('image/png');
+		ev.target.href = dataURL;
+		ev.target.download = 'przebieg.png'
+		
+	};
 
 });
 

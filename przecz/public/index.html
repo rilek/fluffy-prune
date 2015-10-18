@@ -21,7 +21,7 @@
 			<button ng-click="play()" class="btn btn-success" ng-hide="stop">Start</button>
 			<button ng-click="play()" class="btn btn-danger" ng-show="stop">Stop</button>
 
-			<button class="btn btn-default pull-right">Pobierz przebieg</button>
+			<a class="btn btn-default pull-right" ng-click="download($event)">Pobierz przebieg</a>
 		</div>
 	<div class="row">
 		<!-- FORM -->

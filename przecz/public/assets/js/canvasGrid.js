@@ -16,6 +16,9 @@ functions.gridInit = function() {
 	gridCanvas.width = options.canvas.width;
 	gridCanvas.height = options.canvas.height;
 
+	gridCtx.fillStyle = '#fff';
+	gridCtx.fillRect(0,0,options.canvas.width, options.canvas.height);
+
 	// Vertical grid lines
 	for (var x = 0.5; x < options.canvas.width; x += options.grid.width) {
 	  gridCtx.moveTo(x, 0);
@@ -33,7 +36,7 @@ functions.gridInit = function() {
 
 	gridCtx.restore();
 
-	
+
 };
 
 
