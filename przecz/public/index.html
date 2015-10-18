@@ -9,21 +9,27 @@
 	
 </head>
 <body ng-app="app" ng-controller="appCtrl">
-	<div class="container">
-	  <!-- CANVAS -->
+	<div class="container">  
 		<div id="canvas-wrapper">
+
+			<!-- CANVAS -->
 			<canvas id="gridCanvas" width="800" height="200">Twoja przeglądarka nie obsługuje CANVAS
 			</canvas>
 			<canvas id="mainCanvas" width="800" height="200"></canvas>
 			
-			<button class="btn btn-danger" ng-click="reset()">Reset</button>
-			<button class="btn btn-success" ng-click="nextCycle()">Jeden cykl</button>
-			<button ng-click="play()" class="btn btn-success" ng-hide="stop">Start</button>
-			<button ng-click="play()" class="btn btn-danger" ng-show="stop">Stop</button>
+			<!-- Buttons -->
+			<div class="btn-group">
+				<button class="btn btn-danger" ng-click="reset()" type="button">Reset</button>
+				<button class="btn btn-success" ng-click="nextCycle()" type="button">Jeden cykl</button>
+				<button ng-click="play()" class="btn btn-success" ng-hide="stop" type="button">Start</button>
+				<button ng-click="play()" class="btn btn-danger" ng-show="stop" type="button">Stop</button>
+			</div>
 
+			<!-- Download button -->
 			<a class="btn btn-default pull-right" ng-click="download($event)">Pobierz przebieg</a>
 		</div>
 	<div class="row">
+
 		<!-- FORM -->
 		<form name="addVarForm" ng-submit="addVar(addVarForm.$valid)" class="form-group col-lg-6" ng-hide="started" novalidate>
 
@@ -35,7 +41,7 @@
 			<button type="submit" class="btn btn-priamty" ng-disabled="addVarForm.$invalid">Dodaj zmienną</button>
 
 		</form>
-		<div class="col-lg-6">
+		<div class="col-lg-{{6 + !!started*6}}">
 			<table class="table" >
 				<thead>
 				<th>Nazwa</th>
@@ -55,7 +61,6 @@
 
 
 	</div>
-
 
 	<script src="lib/angular/angular.min.js"></script>
 	<script src="app/app.js"></script>

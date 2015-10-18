@@ -3,6 +3,7 @@ var app = angular.module('app', []);
 app.controller('appCtrl', function($scope, $interval) {
 	$scope.vars = [];
 	$scope.stop = false;
+	
 	$scope.nextCycle = function() {
 		if(!$scope.vars.length) {
 			$scope.play();

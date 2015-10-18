@@ -16,6 +16,7 @@ functions.gridInit = function() {
 	gridCanvas.width = options.canvas.width;
 	gridCanvas.height = options.canvas.height;
 
+	// Draw white background
 	gridCtx.fillStyle = '#fff';
 	gridCtx.fillRect(0,0,options.canvas.width, options.canvas.height);
 
@@ -35,11 +36,6 @@ functions.gridInit = function() {
 	gridCtx.stroke();
 
 	gridCtx.restore();
-
-
 };
-
-
-
 
 })();
