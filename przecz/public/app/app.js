@@ -4,6 +4,11 @@ app.controller('appCtrl', function($scope, $interval) {
 	$scope.vars = [];
 	$scope.stop = false;
 	$scope.nextCycle = function() {
+		if(!$scope.vars.length) {
+			$scope.play();
+			return false;
+		}
+		$scope.started = true;
 		for(i = 0, count = $scope.vars.length; i < count; i++) {
 			functions.nextCycle($scope.vars[i]);
 		}
@@ -20,6 +25,14 @@ app.controller('appCtrl', function($scope, $interval) {
 			$scope.stop = false;
 		}
 	};
+
+	$scope.reset = function() {
+		options.canvas.canvas.getContext('2d').clearRect(0, 0, options.canvas.width, options.canvas.height);
+		options.canvas.variableCount = 0;
+		$scope.vars = [];
+		$scope.started = false;
+		$scope.stop ? $scope.play() : '';
+	}
 
 	// Function checking if obj is already in array
 	$scope.containsObject = function (obj, list) {

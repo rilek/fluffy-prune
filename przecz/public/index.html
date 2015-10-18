@@ -15,13 +15,17 @@
 			<canvas id="gridCanvas" width="800" height="200">Twoja przeglądarka nie obsługuje CANVAS
 			</canvas>
 			<canvas id="mainCanvas" width="800" height="200"></canvas>
+			
+			<button class="btn btn-danger" ng-click="reset()">Reset</button>
+			<button class="btn btn-success" ng-click="nextCycle()">Jeden cykl</button>
+			<button ng-click="play()" class="btn btn-success" ng-hide="stop">Start</button>
+			<button ng-click="play()" class="btn btn-danger" ng-show="stop">Stop</button>
 
-			<button ng-click="nextCycle()">Nast. cykl</button>
-			<button ng-click="play()"><span ng-hide="stop">Start</span><span ng-show="stop">Stop</span></button>
+			<button class="btn btn-default pull-right">Pobierz przebieg</button>
 		</div>
 	<div class="row">
 		<!-- FORM -->
-		<form name="addVarForm" ng-submit="addVar(addVarForm.$valid)" class="form-group col-lg-6" novalidate>
+		<form name="addVarForm" ng-submit="addVar(addVarForm.$valid)" class="form-group col-lg-6" ng-hide="started" novalidate>
 
 			<div class="form-group">
 				<label for="add-vars">Dodaj Zmienną: <span ng-show="addVarForm.name.$error.required" class="small">(Nazwa jest wymagana)</span></label>
