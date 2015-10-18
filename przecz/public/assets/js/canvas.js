@@ -117,7 +117,7 @@ functions.nextCycle = function (varObj) {
 		context.beginPath();
 		context.moveTo(varObj.posX, varObj.posY);
 		context.lineTo(varObj.posX, varObj.newPosY);
-		context.lineTo(varObj.newPosX + 2, varObj.newPosY);
+		context.lineTo(varObj.newPosX + 1, varObj.newPosY);
 	}
 
 
