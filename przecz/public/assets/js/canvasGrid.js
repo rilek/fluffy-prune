@@ -1,12 +1,11 @@
 (function() {
+
+
 // Initialize variables
-var gridCanvas = document.getElementById("gridCanvas");
-var mainCanvas = document.getElementById("mainCanvas");
+var gridCanvas = options.grid.canvas;
+var mainCanvas = options.canvas.canvas;
 var gridCtx = gridCanvas.getContext('2d');
-options.grid = {
-	width: 20,
-	height: 20,
-};
+
 
 
 
@@ -33,6 +32,8 @@ functions.gridInit = function() {
 	gridCtx.stroke();
 
 	gridCtx.restore();
+
+	
 };
 
 

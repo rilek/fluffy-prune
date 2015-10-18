@@ -15,8 +15,11 @@
 			<canvas id="gridCanvas" width="800" height="200">Twoja przeglądarka nie obsługuje CANVAS
 			</canvas>
 			<canvas id="mainCanvas" width="800" height="200"></canvas>
-		</div>
 
+			<button ng-click="nextCycle()">Nast. cykl</button>
+			<button ng-click="play()"><span ng-hide="stop">Start</span><span ng-show="stop">Stop</span></button>
+		</div>
+	<div class="row">
 		<!-- FORM -->
 		<form name="addVarForm" ng-submit="addVar(addVarForm.$valid)" class="form-group col-lg-6" novalidate>
 
@@ -44,6 +47,8 @@
 				</tbody>
 			</table>
 		</div>
+	</div>
+
 
 	</div>
 

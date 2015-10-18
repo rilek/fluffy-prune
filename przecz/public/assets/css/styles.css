@@ -14,10 +14,12 @@ body {
 #canvas-wrapper {
 	position:relative;
 	clear: both;
+	margin-bottom: 40px;
 }
 
-#mainCanvas, #gridCanvas {
+#gridCanvas {
 	position: absolute;
 	top: 0;
 	left: 0;
+	z-index: -1;
 }
