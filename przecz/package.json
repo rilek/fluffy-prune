@@ -1,0 +1,9 @@
+{
+  "name": "Precz",
+  "version": "0.0.0",
+  "private": false,
+  "dependencies": {
+    "angular": "^1.4.7",
+    "bootstrap": "^3.3.5"
+  }
+}

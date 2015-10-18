@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Przebiegi czasowe</title>
+	<link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css">
+	<link rel="stylesheet" href="assets/css/styles.css">
+	<link rel="stylesheet" href="assets/libs/R/Rlib.css">
+	
+</head>
+<body ng-app="app" ng-controller="appCtrl">
+	<div class="container">
+	  <!-- CANVAS -->
+		<div id="canvas-wrapper">
+			<canvas id="gridCanvas" width="800" height="200">Twoja przeglądarka nie obsługuje CANVAS
+			</canvas>
+			<canvas id="mainCanvas" width="800" height="200"></canvas>
+		</div>
+
+		<!-- FORM -->
+		<form name="addVarForm" ng-submit="addVar(addVarForm.$valid)" class="form-group col-lg-6" novalidate>
+
+			<div class="form-group">
+				<label for="add-vars">Dodaj Zmienną: <span ng-show="addVarForm.name.$error.required" class="small">(Nazwa jest wymagana)</span></label>
+				<input type="text" name="name" id="add-vars" class="form-control" ng-model="customVar.name" autocomplete="off" required>
+			</div>
+			
+			<button type="submit" class="btn btn-priamty" ng-disabled="addVarForm.$invalid">Dodaj zmienną</button>
+
+		</form>
+		<div class="col-lg-6">
+			<table class="table" >
+				<thead>
+				<th>Nazwa</th>
+				<th>Wartość</th>
+				<th>Zmień</th>
+				</thead>
+				<tbody>
+				<tr ng-repeat="var in vars">
+				<td>{{var.name}}</td>
+				<td>{{var.value}}</td>
+				<td><input type="checkbox" ng-model="var.value"></td>
+				</tr>
+				</tbody>
+			</table>
+		</div>
+
+	</div>
+
+
+	<script src="lib/angular/angular.min.js"></script>
+	<script src="app/app.js"></script>
+	<script src="assets/libs/R/Rlib.js"></script>
+	
+	<script src="assets/js/main.js"></script>
+	<script src="assets/js/canvasGrid.js"></script>
+	<script src="assets/js/canvas.js"></script>
+	
+</body>
+</html>

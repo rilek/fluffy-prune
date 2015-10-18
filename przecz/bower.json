@@ -1,0 +1,24 @@
+{
+  "name": "przecz",
+  "version": "0.0.0",
+  "authors": [
+    "Rafal <r.ileczko@gmail.com>"
+  ],
+  "description": "Przebiegi Czasowe",
+  "main": "index.html",
+  "moduleType": [],
+  "keywords": [
+    "None"
+  ],
+  "license": "MIT",
+  "homepage": "rilek.github.io/fluffy-prune/",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/lib",
+    "test",
+    "tests"
+  ]
+}
