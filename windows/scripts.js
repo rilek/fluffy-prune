@@ -8,17 +8,17 @@
 		Okienko.counter = Okienko.counter || 0;
 		var that = this;
 
-			var isCustom = function(i,f) {
-				var temp = f;
-				R.assert(true, obj[key][i]['customBox']);
-				if(obj[key]['customBox']){
-					R.assert(true, 'dupa');
-					temp = fieldset;
-					fieldset = document.createElement("fieldset");
-					fieldset.className = 'custom';
-					fieldset.id = 'customBox ' + Okienko.counter;
-				}
-			};
+		var isCustom = function(i,f) {
+			var temp = f;
+			R.assert(true, obj[key][i]['customBox']);
+			if(obj[key]['customBox']){
+				R.assert(true, 'dupa');
+				temp = fieldset;
+				fieldset = document.createElement("fieldset");
+				fieldset.className = 'custom';
+				fieldset.id = 'customBox ' + Okienko.counter;
+			}
+		};
 
 
 		//Init function
@@ -26,13 +26,13 @@
 
 			// Init form and fieldset nodes
 			var form = document.getElementById('form ' + Okienko.counter);
-						if(form === null) {
-							form = document.createElement('form');
-							form.id = 'form' + Okienko.counter++;
-							form.className = 'optForm';
-						}
+			if(form === null) {
+				form = document.createElement('form');
+				form.id = 'form' + Okienko.counter++;
+				form.className = 'optForm';
+			}
 			
-						
+			
 			var fieldset = document.createElement('fieldset');
 			var start = new Date().getTime();
 			var cont = document.getElementById(windowOptions['endNode']);
@@ -81,7 +81,7 @@
 							R.setAttributes(input, obj[key][i]['attributes']);
 
 							//append
-														p.appendChild(input);
+							p.appendChild(input);
 							fieldset.appendChild(p);
 
 							//if follow class
@@ -106,7 +106,7 @@
 					case (key.indexOf('select') != -1): {
 						
 						for(i = 0, count = obj[key].length; i < count; i++) {	
-						
+							
 							var p = document.createElement('p');
 							if(obj[key][i]['label']) {
 								var label = document.createElement('label');
@@ -121,25 +121,25 @@
 							var select = document.createElement('select');
 
 						//   'select'[i]
-							if(obj[key][i]['options']) {
-								
-								for(j = 0, 
-									  count = obj[key][i]['options'].length;
-									  j < count;
-									  j++) {
-									var optionNode = document.createElement('option');
-									optionNode.textContent = obj[key][i]['options'][j]['text'];
-									R.setAttributes(optionNode, obj[key][i]['options'][j]);
-									select.appendChild(optionNode); 
-								}
-							}
-												
-								R.setAttributes(select, 
-								{
-									'name': obj[key][i]['name'],
-									'id': obj[key][i]['name']
-								});
+						if(obj[key][i]['options']) {
 							
+							for(j = 0, 
+								count = obj[key][i]['options'].length;
+								j < count;
+								j++) {
+								var optionNode = document.createElement('option');
+							optionNode.textContent = obj[key][i]['options'][j]['text'];
+							R.setAttributes(optionNode, obj[key][i]['options'][j]);
+							select.appendChild(optionNode); 
+						}
+					}
+					
+					R.setAttributes(select, 
+					{
+						'name': obj[key][i]['name'],
+						'id': obj[key][i]['name']
+					});
+					
 							// append everything
 							
 							p.appendChild(select);
@@ -164,60 +164,60 @@
 
 					// Case: radioBox and checkBox
 					case (key.indexOf('radioBox') != -1):
-						for(i = 0, count = obj[key].length; i < count; i++) {
-							var p = document.createElement('p');
-							if(obj[key][i]['label']) {
-								var label = document.createElement('label');
-								label.setAttribute('for', obj[key][i]['name']);
-								label.textContent = obj[key][i]['label'];
-								p.appendChild(label);
-							}	
-							for(j = 0, count2 = obj[key][i]['radios'].length; j < count2; j++) {
-								var radio = document.createElement('input');
-								R.setAttributes(radio,{
-									'name': obj[key][i]['name'],
-									'id': obj[key][i]['radios'][j]['id'] ,
-									'value': obj[key][i]['radios'][j]['value']
-								});
-								if(obj[key][i]['radios'][j]['checked']) {
-									radio.setAttribute('checked', 'checked');
-								}
-								radio.setAttribute('type', 'radio');
-								
-								p.appendChild(radio);
-								p.appendChild(document.createTextNode(obj[key][i]['radios'][j]['text']));
+					for(i = 0, count = obj[key].length; i < count; i++) {
+						var p = document.createElement('p');
+						if(obj[key][i]['label']) {
+							var label = document.createElement('label');
+							label.setAttribute('for', obj[key][i]['name']);
+							label.textContent = obj[key][i]['label'];
+							p.appendChild(label);
+						}	
+						for(j = 0, count2 = obj[key][i]['radios'].length; j < count2; j++) {
+							var radio = document.createElement('input');
+							R.setAttributes(radio,{
+								'name': obj[key][i]['name'],
+								'id': obj[key][i]['radios'][j]['id'] ,
+								'value': obj[key][i]['radios'][j]['value']
+							});
+							if(obj[key][i]['radios'][j]['checked']) {
+								radio.setAttribute('checked', 'checked');
 							}
-							fieldset.appendChild(p);
+							radio.setAttribute('type', 'radio');
+							
+							p.appendChild(radio);
+							p.appendChild(document.createTextNode(obj[key][i]['radios'][j]['text']));
 						}
-						break;
+						fieldset.appendChild(p);
+					}
+					break;
 
 					case (key.indexOf('checkBox') != -1):
-						for(i = 0, count = obj[key].length; i < count; i++) {
-							var p = document.createElement('p');
-							if(obj[key][i]['label']) {
-								var label = document.createElement('label');
-								label.setAttribute('for', obj[key][i]['name']);
-								label.textContent = obj[key][i]['label'];
-								p.appendChild(label);
-							}	
-							for(j = 0, count2 = obj[key][i]['checks'].length; j < count2; j++) {
-								var checkBox = document.createElement('input');
-								R.setAttributes(checkBox,{
-									'name': obj[key][i]['name'],
-									'id': obj[key][i]['checks'][j]['id'] ,
-									'value': obj[key][i]['checks'][j]['value']
-								});
-								if(obj[key][i]['checks'][j]['checked']) {
-									checkBox.setAttribute('checked', 'checked');
-								}
-								checkBox.setAttribute('type', 'checkbox');
-								
-								p.appendChild(checkBox);
-								p.appendChild(document.createTextNode(obj[key][i]['checks'][j]['text']));
+					for(i = 0, count = obj[key].length; i < count; i++) {
+						var p = document.createElement('p');
+						if(obj[key][i]['label']) {
+							var label = document.createElement('label');
+							label.setAttribute('for', obj[key][i]['name']);
+							label.textContent = obj[key][i]['label'];
+							p.appendChild(label);
+						}	
+						for(j = 0, count2 = obj[key][i]['checks'].length; j < count2; j++) {
+							var checkBox = document.createElement('input');
+							R.setAttributes(checkBox,{
+								'name': obj[key][i]['name'],
+								'id': obj[key][i]['checks'][j]['id'] ,
+								'value': obj[key][i]['checks'][j]['value']
+							});
+							if(obj[key][i]['checks'][j]['checked']) {
+								checkBox.setAttribute('checked', 'checked');
 							}
-							fieldset.appendChild(p);
+							checkBox.setAttribute('type', 'checkbox');
+							
+							p.appendChild(checkBox);
+							p.appendChild(document.createTextNode(obj[key][i]['checks'][j]['text']));
 						}
-						break;
+						fieldset.appendChild(p);
+					}
+					break;
 
 					default: {
 						R.assert(true, "brak");
@@ -232,35 +232,35 @@
 	}
 
 //	INIT
-	var okienkoinne = new Okienko({
-		'name': 'Dupa',
-		'input 1': [
-			{
-				'label': 'Brak',
-				'name': 'Brak',
-				'attributes': {
-					'type': 'password',
-					'class': 'hidden'
-				}
-			}
-		],
+var okienkoinne = new Okienko({
+	'name': 'Dupa',
+	'input 1': [
+	{
+		'label': 'Brak',
+		'name': 'Brak',
+		'attributes': {
+			'type': 'password',
+			'class': 'hidden'
+		}
+	}
+	],
 
-	});
+});
 
-	var okienkoStartowe = new Okienko ({
+var okienkoStartowe = new Okienko ({
 		// CREATE TITLE 
 		'name': 'Sraka',
 
 		// CREATE INPUTS
 		'input1': 
 		[
-			{
-				'label': 'X:',
-				'name': 'coordX',
-				'attributes': {
-					'type': 'number',
-					'class': 'ups',
-					'placeholder': 'lel',
+		{
+			'label': 'X:',
+			'name': 'coordX',
+			'attributes': {
+				'type': 'number',
+				'class': 'ups',
+				'placeholder': 'lel',
 				} // end of attributes
 			},	//end of 1
 			{
@@ -295,16 +295,16 @@
 			}], //end of options
 			}, // end of 1
 			{
-			'label': 'Select 2',
-			'name': 'select2',
-			'options': [{
-				'value': 'yup',
-				'selected': 'selected',
-				'text': 'yup',
-			}, {
-				'value': 'samehere',
-				'text': 'Same here'
-			}]
+				'label': 'Select 2',
+				'name': 'select2',
+				'options': [{
+					'value': 'yup',
+					'selected': 'selected',
+					'text': 'yup',
+				}, {
+					'value': 'samehere',
+					'text': 'Same here'
+				}]
 			}
 		], // end of selects
 
@@ -314,16 +314,16 @@
 			'name': 'test',
 			'radios': 
 			[
-				{
+			{
 				'text': 'Tak',
 				'value' : 'tak',
 				'id': 'none',
-				}, {
+			}, {
 				'text' : 'nie',
 				'value': 'nie',
 				'id': 'dupa',
 				'checked': 'checked'
-				}
+			}
 			]
 		},
 		{
@@ -338,16 +338,16 @@
 			'name': 'test',
 			'checks': 
 			[
-				{
+			{
 				'text': 'Tak',
 				'value' : 'tak',
 				'id': 'none',
-				}, {
+			}, {
 				'text' : 'nie',
 				'value': 'nie',
 				'id': 'dupa',
 				'checked': 'checked'
-				}
+			}
 			]
 		},
 		{
