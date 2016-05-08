@@ -1,1 +1,2 @@
-# fluffy-prune
+# Codefolio
+** Autor: Rafał Ileczko **

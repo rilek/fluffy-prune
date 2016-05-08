@@ -1,40 +1,46 @@
+/*------------------------------------*\
+    #RESET
+\*------------------------------------*/
+
 * {
-	padding: 0px;
-	margin: 0px;
+  padding: 0px;
+  margin: 0px;
 }
-/* Do fcji assert */
+
+
+/*------------------------------------*\
+    #ASSERT function styles
+\*------------------------------------*/
+
 #results {
-	background: lightgreen;
-	border: 1px solid olive;
-	position: absolute;
-	bottom: 30px;
-	right: 100px;
-	min-width: 300px;
-	max-height: 300px;
-	padding: 5px 20px;
-	overflow: hidden;
+  position: absolute;
+  bottom: 30px;
+  right: 100px;
 
+  overflow: hidden;
+  display: block;
+  min-width: 300px;
+  max-height: 300px;
+  padding: 5px 20px;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
 
-
-	display: block;
-	list-style-type: disc;
-	margin-block-start: 1em;
-	margin-block-end: 1em;
-	-moz-padding-start: 40px;
-
-
+  background: lightgreen;
+  -moz-padding-start: 40px;
+  border: 1px solid olive;
+  list-style-type: disc;
 }
 
 #results li {
-	font-size: 16px;
-	padding: 2px;
+  padding: 2px;
+  font-size: 16px;
 }
+
 .pass {
-	color: olive;
+  color: olive;
 }
+
 .fail {
-	color: brown;
-	text-decoration: line-through; 
+  color: brown;
+  text-decoration: line-through; 
 }
-
-
