@@ -1,2 +1,2 @@
 # Codefolio
-** Autor: Rafał Ileczko **
+**Autor: Rafał Ileczko**
