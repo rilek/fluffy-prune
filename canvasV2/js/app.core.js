@@ -348,6 +348,12 @@
   window.dispatchEvent(ev);
 
 
+  //Init 
+  //strokeWidth.parentNode.className = 'hidden';
+  //optionDiv.style.width = options.barWidth + 'px';
+  //closeButton.style.right = options.barWidth + 'px';
+
+
 // Creating window class
   function Okienko(obj) {
     var windowOptions = {

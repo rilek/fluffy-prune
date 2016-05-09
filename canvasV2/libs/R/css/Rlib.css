@@ -1,0 +1,55 @@
+/*==========================================================================
+  Simple reset
+  ========================================================================== */
+@import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.6.2/css/font-awesome.min.css);
+* {
+  padding: 0px;
+  margin: 0px; }
+
+/*==========================================================================
+  Assert function styles
+  ========================================================================== */
+#results {
+  position: absolute;
+  display: block;
+  list-style-type: none;
+  color: rgba(0, 0, 0, 0.7); }
+  #results li {
+    width: 300px;
+    padding: 10px 10px;
+    font-size: 16px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); }
+
+/* Results positioning
+  ========================================================================== */
+.assert-bottom-right {
+  bottom: 30px;
+  right: 100px; }
+
+.assert-top-right {
+  top: 30px;
+  right: 100px; }
+
+.assert-bottom-left {
+  bottom: 30px;
+  left: 100px; }
+
+.assert-top-left {
+  top: 30px;
+  left: 100px; }
+
+/* Styles depending on result
+  ========================================================================== */
+.pass {
+  background-color: lightgreen; }
+  .pass:before {
+    font: normal normal normal 14px/1 FontAwesome;
+    content: "\f00c";
+    padding: 0 10px; }
+
+.fail {
+  background-color: #D90B0B; }
+  .fail:before {
+    font: normal normal normal 14px/1 FontAwesome;
+    content: "\f00d";
+    padding: 0 10px; }
