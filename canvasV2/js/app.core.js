@@ -1,164 +1,16 @@
 ﻿(function() {
-  //var init
+
   var options = {
     'cont' : 'optContainer',
     'barWidth' : 250,
-
-
   };
+
+  var okienkoStartowe;
+  var noweOkienko;
+
   Okienko.counter = Okienko.counter || 0;
   var that = this;
 
-  var okienkoStartowe = new Okienko ({
-    'name' : 'Nowy kształt',
-
-    // CREATE SELECT BOXES
-    'select': [{
-      'label': 'Typ:',
-      'name': 'select1',
-      'options': [{
-        'value': 'rect',
-        'selected': 'selected',
-        'text': 'Prostokąt'
-      }, {
-        'text': 'Koło',
-        'value': 'circle',
-      }, {
-        'text': 'Krzywa',
-        'value': 'arc'
-      }] //end of options
-      } // end of 1
-    ], // end of selects
-
-    // CREATE INPUTS
-    'input' : [
-      {
-        'label' : 'Współrzędna X:',
-        'name' : 'startX',
-        'attributes' : {
-          'type' : 'number',
-          'placeholder' : '0',
-          'required' : 'required'
-        } // end of attributes
-      }, {  //end of 1
-        'label' : 'Współrzędna Y:',
-        'name' : 'startY',
-        'attributes' : {
-          'type' : 'number',
-          'placeholder' : '0',
-          'required' : 'required'
-        }, // end of attributes
-      }, {// end of 2
-        'label' : 'Kolor:',
-        'name' : 'color',
-        'attributes' : {
-          'class' : 'color',
-          'value' : '000000'
-        },
-      }
-    ], // end of input
-
-    //CREATE RADIO BUTTONS
-    'radioBox' : [
-      {
-        'label': 'Typ wypełnienia',
-        'name': 'fill',
-        'radios': [
-          {
-            'text': 'Pełne',
-            'value': 'fill',
-            'id': 'fill',
-            'checked': 'checked'
-          },
-          {
-            'text': 'Obrys',
-            'value': 'stroke',
-            'id': 'stroke'
-          }
-        ] // end of options
-      } // end of radio
-    ], // end of radioBox
-    'input customBox strokeCh' : [
-      {
-        'label': 'Szer. obrysu',
-        'name': 'strokeWidth',
-        'attributes': {
-          'type': 'number',
-          'id': 'sWidth',
-          'value': '1',
-
-        },
-        'customBox': true,
-        'customId': 'strokeCh'
-      }
-    ],
-    'input customBox fillCh' : [
-      {
-        'label': 'szer. wypelnienia',
-        'name': 'fillWidth'
-      }
-    ],
-    'input customBox rectCh' : [
-    {
-      'label': 'Szerokość',
-      'name' : 'rectWidth',
-      'attributes': {
-        'type': 'number',
-        'id': 'rectWidth'
-      },
-      'customBox': true,
-      'customId': 'rectDimensionsCh'
-    }, {
-      'label': 'Wysokość',
-      'name': 'rectHeight',
-      'attributes': {
-        'type': 'number',
-        'id': 'rectHeight'
-      },
-      'customBox': true,
-      'customId': '',
-    }
-    ],
-    'input circDimensions' : []
-
-  });
-/*
-  var okienkoStartowe = new Okienko ({
-    'name' : 'Nowy Kształt',
-    'input' : [
-      {
-        'label' : 'Współrzędna X:',
-        'name' : 'startX',
-        'attributes' : {
-          'type' : 'number',
-          'placeholder' : '0',
-          'required' : 'required'
-        } // end of attributes
-      },  //end of 1
-      {
-        'label' : 'Współrzędna Y:',
-        'name' : 'startY',
-        'attributes' : {
-          'type' : 'number',
-          'placeholder' : '0',
-          'required' : 'required'
-        }, // end of attributes
-
-      }, // end of 2
-      {
-        'label' : 'Wybierz kolor',
-        'name' : 'color',
-        'attributes' : {
-          'class' : 'color',
-          'value' : '000000'
-        },
-
-      }
-    ], // end of input
-
-
-  });
-*/
   var c = document.getElementById("myCanv");
   var ctx = c.getContext("2d");
   
@@ -173,26 +25,27 @@
   var fillFlag;
   var menuOpen = 1;
 
-
-  R.addEvent(optionDiv, 'change', function(e){
-    e = e || event;
+  /**
+   * Function 
+   * @param  {[type]} e){                 e [description]
+   * @return {[type]}      [description]
+   */
+  R.addEvent(optionDiv, 'change', function (e) {
+    var e = e || event;
     var target = e.target || e.srcElement;
 
     if(target.nodeName == 'SELECT') {
 
     } else if (target.nodeName == 'INPUT') {
-      
       var parentChild = target.parentNode.childNodes;
-      for(i=0, count = parentChild.length; i<count; i++) {
-
-        R.assert(true, parentChild[i].value);
+      for(var i = 0, count = parentChild.length; i < count; i++) {
+        //R.assert(true, parentChild[i].value);
         var parentValue = parentChild[i].value || '';
         var targetTarget = document.getElementById(target.id + 'Ch') || '';
         if(target.id == parentValue){
-          
           var targetClass = targetTarget.className == 'hidden' ? '' : 'hidden';
           targetTarget.className = targetClass;
-          R.assert(true, parentChild[i].value+'Ch');
+          //R.assert(true, parentChild[i].value+'Ch');
         } else {
           targetTarget.className = 'hidden';
         }
@@ -298,7 +151,9 @@
   });
 */
 
-  //Resize canvas
+  /**
+   * Resize canvas
+   */
   R.addEvent(window, "resize", function() {
     var d = c.parentNode;
     var inMemCanvas = document.createElement("canvas");
@@ -308,33 +163,27 @@
       var newWidth;
 
     // resize my canvas as needed, probably in response to mouse events
-    if(window.innerWidth > 500){
-      newWidth = (window.innerWidth * 100)/100 - menuOpen*options.barWidth - 49;
-
+    if(window.innerWidth > 500) {
+      newWidth = window.innerWidth - menuOpen*options.barWidth - 53;
     } else {
       newWidth = (window.innerWidth * 100)/100;
     }
     c.width = newWidth;
-    c.height = (window.innerHeight * 100)/100 - 10;
-    
+    c.height = (window.innerHeight * 100)/100 - 14;
     ctx.drawImage(inMemCanvas, 0, 0);
-    
   }, false);
 
-  R.addEvent(closeButton, 'click', function(){
-    
+  R.addEvent(closeButton, 'click', function () {
     if(menuOpen) {
       menuOpen = 0;
       optionDiv.style.right = -(options.barWidth) + 'px';
       closeButton.childNodes[0].innerHTML = '<';
       window.dispatchEvent(ev);
-
     } else {
       menuOpen = 1;
       optionDiv.style.right = 0 + 'px';
       closeButton.childNodes[0].innerHTML = '>';
       window.dispatchEvent(ev);
-
     }
   },false);
 
@@ -364,7 +213,7 @@
     var that = this;
 
     //Init function
-    (function() {
+    (function () {
 
       Okienko.customCounter = 0;
 
@@ -385,16 +234,16 @@
       div.style.width = options.barWidth + 'px';
       cont.appendChild(div);
 
-      var isCustom = function(obj, key) {
+      var isCustom = function (obj, key) {
         if(key.indexOf('customBox') != -1){
           fieldset = document.createElement('fieldset');
           fieldset.className = 'custom';
           fieldset.id = key.split(' ')[2];
-          fieldset.className = 'hidden';
+          //fieldset.className = 'hidden';
           return true;
         }
       };
-      var isCustomEnd = function() {
+      var isCustomEnd = function () {
         if(isCutomized) {
           form.appendChild(fieldset);
           fieldset = temp;
@@ -409,7 +258,7 @@
         isCutomized = isCustom(obj, key);
 
         switch (true) {
-
+          
           // Case: title
           case (key.indexOf('name') != -1): { 
             var h1 = document.createElement('h1');
@@ -422,10 +271,9 @@
           // Case: input
           case (key.indexOf('input') != -1): {
             for(i = 0; i < obj[key].length ; i++){
-              
-
               var p = document.createElement('p');
               var input = document.createElement('input');
+
               if(obj[key][i]['label']) {
                 var label = document.createElement('label');
                 label.textContent = obj[key][i]['label'] || '';
@@ -436,11 +284,13 @@
                 });
                 p.appendChild(label);
               }
+
               R.setAttributes(input, 
               {
                 'name': obj[key][i]['name'],
                 'id': obj[key][i]['name']
               });
+
               R.setAttributes(input, obj[key][i]['attributes']);
 
               //append
@@ -581,7 +431,6 @@
             break;
 
           default: {
-            R.assert(true, "brak");
             break;
           }
         }
@@ -592,6 +441,162 @@
       console.log('Czas utworzenia okienka: ' + end + ' ms');
     })();
   }
+
+/**
+ * Nowy kształt box
+ * @type {Okienko}
+ */
+  okienkoStartowe = new Okienko ({
+    'name' : 'Nowy kształt',
+
+    // CREATE SELECT BOXES
+    'select': [{
+      'label': 'Typ:',
+      'name': 'select1',
+      'options': [{
+        'value': 'rect',
+        'selected': 'selected',
+        'text': 'Prostokąt'
+        }, {
+        'text': 'Koło',
+        'value': 'circle',
+        }, {
+        'text': 'Krzywa',
+        'value': 'arc'
+      }] //end of options
+    }], // end of selects
+
+    // CREATE INPUTS
+    'input': [{
+      'label': 'Współrzędna X:',
+      'name': 'startX',
+      'attributes': {
+        'type': 'number',
+        'placeholder': '0',
+        'required': 'required'
+      } // end of attributes
+    }, {  //end of 1
+      'label': 'Współrzędna Y:',
+      'name': 'startY',
+      'attributes': {
+        'type': 'number',
+        'placeholder': '0',
+        'required': 'required'
+      }, // end of attributes
+    }, {// end of 2
+      'label': 'Kolor:',
+      'name': 'color',
+      'attributes': {
+        'class': 'color',
+        'value': '000000'
+      }
+    }], // end of inputs
+
+    //CREATE RADIO BUTTONS
+    'radioBox': [{
+        'label': 'Typ wypełnienia',
+        'name': 'fill',
+        'radios': [{
+            'text': 'Pełne',
+            'value': 'fill',
+            'id': 'fill',
+            'checked': 'checked'
+          },
+          {
+            'text': 'Obrys',
+            'value': 'stroke',
+            'id': 'stroke'
+      }] // end of options
+      } // end of radio
+    ], // end of radioBox
+
+    'input customBox strokeCh': [{
+      'label': 'Szer. obrysu',
+      'name': 'strokeWidth',
+      'attributes': {
+        'type': 'number',
+        'id': 'sWidth',
+        'value': '1',
+      },
+      'customBox': true,
+      'customId': 'strokeCh'
+    }],
+    'input customBox fillCh': [{
+        'label': 'szer. wypelnienia',
+        'name': 'fillWidth',
+        'attributes': {
+          'type': 'number',
+          'id': 'rectWidth',
+          'value': 0
+        },
+    }],
+    'input customBox rectCh': [{
+      'label': 'Szerokość',
+      'name' : 'rectWidth',
+      'attributes': {
+        'type': 'number',
+        'id': 'rectWidth',
+        'value': 0
+      },
+      'customBox': true,
+      'customId': 'rectDimensionsCh'
+    }, {
+      'label': 'Wysokość',
+      'name': 'rectHeight',
+      'attributes': {
+        'type': 'number',
+        'id': 'rectHeight',
+        'value': 0
+      },
+      'customBox': true,
+      'customId': '',
+    }
+    ],
+    'input circDimensions' : []
+  });
+
+  okienkoKolejne = new Okienko ({
+    'name' : 'Kolejny kształt',
+  });
+
+/*
+  var okienkoStartowe = new Okienko ({
+    'name' : 'Nowy Kształt',
+    'input' : [
+      {
+        'label' : 'Współrzędna X:',
+        'name' : 'startX',
+        'attributes' : {
+          'type' : 'number',
+          'placeholder' : '0',
+          'required' : 'required'
+        } // end of attributes
+      },  //end of 1
+      {
+        'label' : 'Współrzędna Y:',
+        'name' : 'startY',
+        'attributes' : {
+          'type' : 'number',
+          'placeholder' : '0',
+          'required' : 'required'
+        }, // end of attributes
+
+      }, // end of 2
+      {
+        'label' : 'Wybierz kolor',
+        'name' : 'color',
+        'attributes' : {
+          'class' : 'color',
+          'value' : '000000'
+        },
+
+      }
+    ], // end of input
+
+
+  });
+*/
+
 
 
 })();

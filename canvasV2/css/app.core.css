@@ -13,10 +13,6 @@
   BASE
   ========================================================================== */
 body {
-  width: 100vw;
-  width: 100%;
-  height: 100vh;
-  height: 100%;
   font-family: 'Open Sans', sans-serif;
   font-size: 0.6875rem;
   color: #000;
@@ -28,10 +24,16 @@ body {
   position: absolute;
   top: 10px;
   left: 10px;
+  font-weight: 600;
+  font-size: 10px;
+  padding: 0.5em 0.625em 0.625em 0.625em;
+  color: #16171c;
+  background: #00cc99;
+  line-height: 1;
+  border: 2px solid #16171c;
   opacity: 0; }
-
-#logo:hover {
-  opacity: 1; }
+  #logo:hover {
+    opacity: 1; }
 
 #container {
   position: relative;
@@ -45,7 +47,9 @@ body {
   overflow: hidden;
   background: #fff; }
 
-/*        FORM */
+/*==========================================================================
+  SIDEBAR
+  ========================================================================== */
 .options {
   position: absolute;
   right: 0px;
@@ -109,9 +113,8 @@ body {
   background: linear-gradient(0deg, #191e22, #31363c);
   margin: 3px 2px;
   padding: 2px 5px; }
-
-.opt .button:hover {
-  background: #333; }
+  .opt .button:hover {
+    background: #333; }
 
 #minibar {
   position: relative;
@@ -153,32 +156,35 @@ body {
   background: #252933;
   transition: 0.2s; }
 
+/*==========================================================================
+  OPTIONS BOX
+  Single box containing multiple forms 
+  ========================================================================== */
 .optWindow {
   color: #9daeb8; }
+  .optWindow h1 {
+    display: inline-block;
+    position: relative;
+    padding: 8px 10px;
+    margin-bottom: -1px;
+    background: #16171c;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 5px;
+    box-sizing: border-box;
+    border-top: 2px solid #00cc99; }
+  .optWindow .optForm {
+    display: block;
+    margin-top: 0px;
+    padding: 10px;
+    background: #16171c; }
+  .optWindow p {
+    margin: 5px 0px; }
 
-.optWindow h1 {
-  display: inline-block;
-  position: relative;
-  padding: 8px 10px;
-  margin-bottom: -1px;
-  background: #16171c;
-  font-weight: bold;
-  cursor: pointer;
-  margin-top: 5px; }
-
-.optWindow h1 {
-  box-sizing: border-box;
-  border-top: 2px solid #00cc99; }
-
-.optWindow .optForm {
-  display: block;
-  margin-top: 0px;
-  padding: 10px;
-  background: #16171c; }
-
-.optWindow p {
-  margin: 5px 0px; }
-
+/*==========================================================================
+  OPTIONS FORM
+  Form generated from JSON object.  
+  ========================================================================== */
 .optForm label, .optForm input {
   height: 18px; }
 
@@ -211,6 +217,9 @@ body {
 .optForm p * {
   vertical-align: middle; }
 
+/*==========================================================================
+  MISC 
+  ========================================================================== */
 .ups {
   width: 40px; }
 
