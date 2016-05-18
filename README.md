@@ -1,2 +1,0 @@
-# Codefolio
-**Autor: Rafał Ileczko**
