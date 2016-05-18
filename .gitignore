@@ -1,0 +1,6 @@
+node_modules/
+canvas/
+canvas_raw/
+/przecz/.tmp
+**/*.sublime-project
+**/*.sublime-workspace

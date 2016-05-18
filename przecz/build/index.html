@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pl-PL">
+<head>
+  <meta charset="utf-8">
+
+  <title>Przebiegi czasowe</title>
+
+  <link rel="stylesheet" href="css/lib.css">
+
+  <link rel="stylesheet" href="css/app.css">
+
+</head>
+<body ng-app="app" ng-controller="appCtrl">
+  <div class="container">  
+    <div id="canvas-wrapper">
+
+      <!-- CANVAS -->
+      <canvas id="gridCanvas" width="800" height="200">
+        Twoja przeglądarka nie obsługuje CANVAS
+      </canvas>
+      <canvas id="mainCanvas" width="800" height="200"></canvas>
+      
+      <!-- Buttons -->
+      <div class="btn-group">
+        <button class="btn btn-danger" ng-click="reset()" type="button">
+          Reset
+        </button>
+        <button class="btn btn-success" ng-click="nextCycle()" type="button">
+          Jeden cykl
+        </button>
+        <button ng-click="play()" class="btn btn-success" ng-hide="stop" 
+          type="button">Start</button>
+        <button ng-click="play()" class="btn btn-danger" ng-show="stop" 
+          type="button">Stop</button>
+      </div>
+
+      <!-- Download button -->
+      <a class="btn btn-default pull-right" ng-click="download($event)">
+        Pobierz przebieg
+      </a>
+
+    </div>
+  <div class="row">
+
+    <!-- FORM -->
+    <form name="addVarForm" ng-submit="addVar(addVarForm.$valid)" class="form-group col-lg-6" ng-hide="started" novalidate>
+
+      <div class="form-group">
+        <label for="add-vars">Dodaj Zmienną: 
+          <span ng-show="addVarForm.name.$error.required" class="small">
+          (Nazwa jest wymagana)
+          </span>
+        </label>
+        <input type="text" name="name" id="add-vars" class="form-control" ng-model="customVar.name" autocomplete="off" required>
+      </div>
+      
+      <button type="submit" class="btn btn-priamty" ng-disabled="addVarForm.$invalid">Dodaj zmienną</button>
+
+    </form>
+
+    <div class="col-lg-{{6 + !!started*6}}">
+      <table class="table" >
+        <thead>
+          <th>Nazwa</th>
+          <th>Wartość</th>
+          <th>Zmień</th>
+        </thead>
+        <tbody>
+          <tr ng-repeat="var in vars">
+            <td>{{var.name}}</td>
+            <td>{{var.value}}</td>
+            <td><input type="checkbox" ng-model="var.value"></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+  </div>
+  <script src="js/libs.js"></script>
+
+  <script src="js/app.js"></script>
+  
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pl-PL" ng-app="app" ng-strict-di>
+<head>
+  <meta charset="utf-8">
+
+  <title>Przebiegi czasowe</title>
+
+  <!-- build:css css/lib.css -->
+  <!-- bower:css -->
+  <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css" />
+  <!-- endbower -->
+  <!-- endbuild -->
+
+  <!-- build:css css/app.css -->
+  <!-- inject:css -->
+  <link rel="stylesheet" href="/.tmp/styles.css">
+  <!-- endinject -->
+  <!-- endbuild -->
+
+</head>
+<bodyng-controller="appCtrl">
+  <div class="container">  
+    <div id="canvas-wrapper">
+
+      <!-- CANVAS -->
+      <canvas id="gridCanvas" width="800" height="200">
+        Twoja przeglądarka nie obsługuje CANVAS
+      </canvas>
+      <canvas id="mainCanvas" width="800" height="200"></canvas>
+      
+      <!-- Buttons -->
+      <div class="btn-group">
+        <button class="btn btn-danger" ng-click="reset()" type="button">
+          Reset
+        </button>
+        <button class="btn btn-success" ng-click="nextCycle()" type="button">
+          Jeden cykl
+        </button>
+        <button ng-click="play()" class="btn btn-success" ng-hide="stop" 
+          type="button">Start</button>
+        <button ng-click="play()" class="btn btn-danger" ng-show="stop" 
+          type="button">Stop</button>
+      </div>
+
+      <!-- Download button -->
+      <a class="btn btn-default pull-right" ng-click="download($event)">
+        Pobierz przebieg
+      </a>
+
+    </div>
+  <div class="row">
+
+    <!-- FORM -->
+    <form name="addVarForm" ng-submit="addVar(addVarForm.$valid)" class="form-group col-lg-6" ng-hide="started" novalidate>
+
+      <div class="form-group">
+        <label for="add-vars">Dodaj Zmienną: 
+          <span ng-show="addVarForm.name.$error.required" class="small">
+          (Nazwa jest wymagana)
+          </span>
+        </label>
+        <input type="text" name="name" id="add-vars" class="form-control" ng-model="customVar.name" autocomplete="off" required>
+      </div>
+      
+      <button type="submit" class="btn btn-priamty" ng-disabled="addVarForm.$invalid">Dodaj zmienną</button>
+
+    </form>
+
+    <div class="col-lg-{{6 + !!started*6}}">
+      <table class="table" >
+        <thead>
+          <th>Nazwa</th>
+          <th>Wartość</th>
+          <th>Zmień</th>
+        </thead>
+        <tbody>
+          <tr ng-repeat="var in vars">
+            <td>{{var.name}}</td>
+            <td>{{var.value}}</td>
+            <td><input type="checkbox" ng-model="var.value"></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+  </div>
+  <!-- build:js js/libs.js -->
+  <!-- bower:js -->
+  <script src="lib/angular/angular.js"></script>
+  <script src="lib/jquery/dist/jquery.js"></script>
+  <script src="lib/bootstrap/dist/js/bootstrap.js"></script>
+  <!-- endbower -->
+  <!-- endbuild -->
+
+  <!-- build:js js/app.js -->
+  <!-- inject:js -->
+  <script src="/src/public/app/app.js"></script>
+  <script src="/src/public/lib/R/js/Rlib.js"></script>
+  <script src="/src/public/assets/js/main.js"></script>
+  <script src="/src/public/assets/js/canvasGrid.js"></script>
+  <script src="/src/public/assets/js/canvas.js"></script>
+  <!-- endinject -->
+  <!-- endbuild -->
+  
+</body>
+</html>

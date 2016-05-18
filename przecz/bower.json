@@ -1,0 +1,39 @@
+{
+  "name": "przecz",
+  "version": "0.0.1",
+  "authors": [
+    "Rafal <r.ileczko@gmail.com>"
+  ],
+  "description": "Przebiegi Czasowe",
+  "main": "index.html",
+  "moduleType": [],
+  "keywords": [
+    "None"
+  ],
+  "license": "MIT",
+  "homepage": "rilek.github.io/fluffy-prune/",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "public/lib",
+    "test",
+    "tests",
+    "**/*.sublime-project",
+    "**/*.sublime-workspace"
+  ],
+  "dependencies": {
+    "angular": "^1.5.5",
+    "bootstrap": "^3.3.6",
+    "jquery": "^2.2.3"
+  },
+  "overrides":{
+    "bootstrap":{
+      "main":[
+      "dist/js/bootstrap.js",
+      "dist/css/bootstrap.min.css",
+      "less/bootstrap.less"
+      ]
+    }
+  }
+}
